@@ -7,7 +7,10 @@
 		{
 			"Name": "GradProject",
 			"Type": "Runtime",
-			"LoadingPhase": "Default"
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"Engine"
+			]
 		}
 	],
 	"Plugins": [
@@ -25,6 +28,10 @@
 		},
 		{
 			"Name": "PyRuntimeUtility",
+			"Enabled": true
+		},
+		{
+			"Name": "CommonUI",
 			"Enabled": true
 		}
 	]
