@@ -13,5 +13,7 @@ UCLASS()
 class GRADPROJECT_API UObjectTransporter : public UGameInstanceSubsystem
 {
 	GENERATED_BODY()
-	
+
+public:
+
 };
