@@ -171,6 +171,21 @@ TArray<uint8> ATcpSocketConnection::Conv_ByteToBytes(uint8 InByte)
 	return result;
 }
 
+FString ATcpSocketConnection::ConvertBytesToStringCustom(const TArray<uint8>& DataBuffer) {
+
+	if (DataBuffer[DataBuffer.Num() - 1] == 0x00)
+	{
+		return UTF8_TO_TCHAR(DataBuffer.GetData());
+	}
+
+	TArray<uint8> tempBuffer;
+	tempBuffer.SetNum(DataBuffer.Num() + 1);
+	FMemory::Memcpy(tempBuffer.GetData(), DataBuffer.GetData(), DataBuffer.Num());
+	tempBuffer[tempBuffer.Num() - 1] = 0x00;
+
+	return UTF8_TO_TCHAR(tempBuffer.GetData());
+}
+
 int32 ATcpSocketConnection::Message_ReadInt(TArray<uint8>& Message)
 {
 	if (Message.Num() < 4)

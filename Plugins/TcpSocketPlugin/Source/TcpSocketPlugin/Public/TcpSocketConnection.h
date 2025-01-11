@@ -88,6 +88,9 @@ public:
 	UFUNCTION(BlueprintPure, meta = (DisplayName = "Byte To Bytes", CompactNodeTitle = "->", Keywords = "cast convert", BlueprintAutocast), Category = "Socket")
 	static TArray<uint8> Conv_ByteToBytes(uint8 InByte);
 
+	UFUNCTION(BlueprintCallable)
+	FString ConvertBytesToStringCustom(const TArray<uint8>& DataBuffer);
+
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Read Int", Keywords = "read int"), Category = "Socket")
 	static int32 Message_ReadInt(UPARAM(ref) TArray<uint8>& Message);
 

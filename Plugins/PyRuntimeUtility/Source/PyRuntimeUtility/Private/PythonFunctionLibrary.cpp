@@ -3,7 +3,7 @@
 
 #include "PythonFunctionLibrary.h"
 
-FString UPythonFunctionLibrary::ConvertBytesToStringCustom(const TArray<uint8>& DataBuffer) {
+FString UPythonFunctionLibrary::ConvertBytesToString(const TArray<uint8>& DataBuffer) {
 
 	if (DataBuffer[DataBuffer.Num() - 1] == 0x00)
 	{

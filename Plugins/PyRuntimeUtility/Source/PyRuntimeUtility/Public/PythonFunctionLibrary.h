@@ -15,5 +15,5 @@ class PYRUNTIMEUTILITY_API UPythonFunctionLibrary : public UBlueprintFunctionLib
 	GENERATED_BODY()
 public:
 	UFUNCTION(BlueprintCallable, Category = "Python Utilities")
-	static FString ConvertBytesToStringCustom(const TArray<uint8>& DataBuffer);
+	static FString ConvertBytesToString(const TArray<uint8>& DataBuffer);
 };
