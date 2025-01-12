@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Logging/LogMacros.h"
+#include "ModifiableActorBase.h"
 #include "GradProjectCharacter.generated.h"
 
 class USpringArmComponent;
@@ -15,7 +16,7 @@ struct FInputActionValue;
 
 DECLARE_LOG_CATEGORY_EXTERN(LogTemplateCharacter, Log, All);
 
-UCLASS(config=Game)
+UCLASS(config = Game)
 class AGradProjectCharacter : public ACharacter
 {
 	GENERATED_BODY()
@@ -27,7 +28,7 @@ class AGradProjectCharacter : public ACharacter
 	/** Follow camera */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	UCameraComponent* FollowCamera;
-	
+
 	/** MappingContext */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	UInputMappingContext* DefaultMappingContext;
@@ -46,7 +47,7 @@ class AGradProjectCharacter : public ACharacter
 
 public:
 	AGradProjectCharacter();
-	
+
 
 protected:
 
@@ -55,14 +56,19 @@ protected:
 
 	/** Called for looking input */
 	void Look(const FInputActionValue& Value);
-			
+
 
 protected:
 	// APawn interface
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-	
+
 	// To add mapping context
 	virtual void BeginPlay();
+
+public:
+
+	UPROPERTY(BlueprintReadOnly)
+	AModifiableActorBase* PointedActor;
 
 public:
 	/** Returns CameraBoom subobject **/
