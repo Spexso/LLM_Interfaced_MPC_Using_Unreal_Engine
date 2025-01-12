@@ -67,8 +67,8 @@ protected:
 
 public:
 
-	UPROPERTY(BlueprintReadOnly)
-	AModifiableActorBase* PointedActor;
+	//UPROPERTY(BlueprintReadOnly)
+	//AModifiableActorBase* PointedActor;
 
 public:
 	/** Returns CameraBoom subobject **/
