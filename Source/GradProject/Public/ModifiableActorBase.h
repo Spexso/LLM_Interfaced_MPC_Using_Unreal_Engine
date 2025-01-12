@@ -4,7 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Helpers.h"
 #include "ModifiableActorBase.generated.h"
+
 
 UCLASS()
 class GRADPROJECT_API AModifiableActorBase : public AActor
@@ -27,6 +29,9 @@ public:
 
 	// Helper to initialize the dynamic material instance
 	void InitializeDynamicMaterial();
+	
+	UFUNCTION(BlueprintCallable)
+	FLinearColor GetResolvedColor(ECommonColors Color);
 
 protected:
 
@@ -34,13 +39,12 @@ protected:
 	FName ParameterToChange;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Setup")
-	UMaterialInterface* Material;
+	UMaterialInterface* BaseMaterial;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Setup")
 	UStaticMeshComponent* MeshComponent;
 
-	// The dynamic material instance used by this actor
-	UPROPERTY(BlueprintReadOnly, Category = "Material")
+	UPROPERTY(BlueprintReadOnly, Category = "Setup")
 	UMaterialInstanceDynamic* DynamicMaterialInstance;
 
 protected:

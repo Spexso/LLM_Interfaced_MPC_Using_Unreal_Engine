@@ -44,10 +44,10 @@ void AModifiableActorBase::InitializeDynamicMaterial()
 {
 	if (MeshComponent)
 	{
-		if (Material)
+		if (BaseMaterial)
 		{
 			// Create a dynamic material instance
-			DynamicMaterialInstance = UMaterialInstanceDynamic::Create(Material, this);
+			DynamicMaterialInstance = UMaterialInstanceDynamic::Create(BaseMaterial, this);
 			if (DynamicMaterialInstance)
 			{
 				// Apply the dynamic material instance to the mesh
@@ -55,6 +55,11 @@ void AModifiableActorBase::InitializeDynamicMaterial()
 			}
 		}
 	}
+}
+
+FLinearColor AModifiableActorBase::GetResolvedColor(ECommonColors Color)
+{
+	return UColorMappingHelper::GetLinearColor(Color);
 }
 
 // Called when the game starts or when spawned
