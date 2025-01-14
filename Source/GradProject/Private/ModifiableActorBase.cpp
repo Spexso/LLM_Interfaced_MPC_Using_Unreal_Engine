@@ -18,7 +18,19 @@ void AModifiableActorBase::ChangeMaterialColor(FName ParameterName, const FLinea
 {
 	if (DynamicMaterialInstance)
 	{
-		DynamicMaterialInstance->SetVectorParameterValue(ParameterName, NewColor);
+		if (!bUseInstancedMaterial)
+		{
+			DynamicMaterialInstance->SetVectorParameterValue(ParameterName, NewColor);
+
+		}
+		else
+		{
+			UMaterialInterface* MaterialToCreate = MeshComponent->GetMaterial(MaterialIndexToEdit);
+			DynamicMaterialInstance = UMaterialInstanceDynamic::Create(MaterialToCreate, this);
+			
+			DynamicMaterialInstance->SetVectorParameterValue(ParameterName, NewColor);
+			MeshComponent->SetMaterial(MaterialIndexToEdit, DynamicMaterialInstance);
+		}
 	}
 }
 

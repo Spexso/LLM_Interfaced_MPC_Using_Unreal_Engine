@@ -41,6 +41,12 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Setup")
 	UMaterialInterface* BaseMaterial;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Setup")
+	bool bUseInstancedMaterial = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Setup")
+	int32 MaterialIndexToEdit = 0;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Setup")
 	UStaticMeshComponent* MeshComponent;
 
