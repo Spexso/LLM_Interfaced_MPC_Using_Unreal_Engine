@@ -87,7 +87,7 @@ public:
 		if (ColorName.Equals(TEXT("White"), ESearchCase::IgnoreCase)) return ECommonColors::White;
 
 		// Default or error value
-		return ECommonColors::Black; // Replace with an appropriate default or error handling
+		return ECommonColors::Black;
 	}
 };
 
